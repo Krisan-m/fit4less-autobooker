@@ -35,6 +35,18 @@ try:
     driver.implicitly_wait(5)
     email_input.send_keys(os.getenv("F4L_LOGIN"))
     password_input.send_keys(os.getenv("F4L_PASSWORD"))
+    
+    any_slots_available = False
+    booked_appointment = False
+    curr_dt = datetime.now(timezone('est'))
+
+    if curr_dt.hour == 23 and curr_dt.minute >= 58:
+        print("Waiting for 12:00AM..")
+        while datetime.now(timezone('est')).hour == 23:            
+            time.sleep(0.5)
+        print("Reached 12:00AM!")            
+    
+    
     driver.implicitly_wait(5)
     password_input.send_keys(Keys.ENTER)
     driver.implicitly_wait(5)
@@ -52,15 +64,7 @@ try:
 #                 break
     
     driver.implicitly_wait(5)
-    any_slots_available = False
-    booked_appointment = False
-    curr_dt = datetime.now(timezone('est'))
 
-    if curr_dt.hour == 23 and curr_dt.minute >= 58:
-        print("Waiting for 12:00AM..")
-        while datetime.now(timezone('est')).hour == 23:            
-            time.sleep(0.5)
-        print("Reached 12:00AM!")            
     curr_dt = datetime.now(timezone('est'))
     curr_time = datetime.strptime(str(curr_dt.hour) + ":" + str(curr_dt.minute), '%H:%M')   
     days_list = [int(x) for x in os.getenv("DAYS").split(",")]  
