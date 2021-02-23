@@ -110,7 +110,7 @@ try:
         
         # define range of wanted time periods
         start_range = 11 if curr_day >= 5 else 19 #datetime.strptime("7:00PM", '%I:%M%p')
-        end_range = 18 if curr_day >= 5 else 22 #datetime.strptime("10:00PM", '%I:%M%p')       
+        end_range = 18 if curr_day >= 5 else 20 #datetime.strptime("10:00PM", '%I:%M%p')       
                     
         # check the available slots.
         for slot in available_slots[::-1]:
