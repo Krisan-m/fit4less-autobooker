@@ -73,7 +73,14 @@ try:
         booking_date = curr_dt.date() + timedelta(days=i)
         curr_day = booking_date.weekday() # 0-4 is weekday, 5-6 is weekend
         
-        driver.find_element_by_id("btn_date_select").click()  # day selector
+        try:
+            driver.find_element_by_id("btn_date_select").click()  # day selector
+        except:
+            print("Couldn't find date button. Refreshing..")
+            driver.refresh()
+            driver.implicitly_wait(10)
+            driver.find_element_by_id("btn_date_select").click()  # day selector
+
         driver.implicitly_wait(3)
         driver.find_element_by_id("date_" + str(booking_date)).click()
         driver.implicitly_wait(5)
