@@ -78,6 +78,7 @@ try:
         except:
             print("Couldn't find date button. Refreshing..")
             driver.refresh()
+            time.sleep(2)
             driver.implicitly_wait(10)
             driver.find_element_by_id("btn_date_select").click()  # day selector
 
