@@ -46,7 +46,7 @@ try:
             time.sleep(0.5)
         print("Reached 12:00AM!")            
         print("Waiting additional 5 seconds..")
-        time.sleep(5)
+        time.sleep(11)
     
     
     driver.implicitly_wait(5)
@@ -77,6 +77,7 @@ try:
             driver.find_element_by_id("btn_date_select").click()  # day selector
         except:
             print("Couldn't find date button. Refreshing..")
+            time.sleep(5)
             driver.refresh()
             time.sleep(2)
             driver.implicitly_wait(10)
