@@ -44,9 +44,7 @@ try:
         print("Waiting for 12:00AM..")
         while datetime.now(timezone('est')).hour == 23:            
             time.sleep(0.5)
-        print("Reached 12:00AM!")            
-        print("Waiting additional 5 seconds..")
-        time.sleep(11)
+        print("Reached 12:00AM!")        
     
     
     driver.implicitly_wait(5)
