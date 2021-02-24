@@ -118,9 +118,12 @@ try:
         # define range of wanted time periods
         start_range = 11 if curr_day >= 5 else 19 #datetime.strptime("7:00PM", '%I:%M%p')
         end_range = 18 if curr_day >= 5 else 20 #datetime.strptime("10:00PM", '%I:%M%p')       
-                    
+        reversed = -1
+        if curr_day < 5:
+            reversed = 1
+        
         # check the available slots.
-        for slot in available_slots[::-1]:
+        for slot in available_slots[::reversed]:
             a_slot = datetime.strptime(str(slot.text).split()[5] + str(slot.text).split()[6], '%I:%M%p')
             
             if a_slot.hour == curr_time.hour or abs((a_slot - curr_time).total_seconds() / 60) <= 30:
