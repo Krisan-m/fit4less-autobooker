@@ -45,6 +45,12 @@ try:
         while datetime.now(timezone('est')).hour == 23:            
             time.sleep(0.5)
         print("Reached 12:00AM!")        
+
+    if curr_dt.hour == 11 and curr_dt.minute >= 58:
+        print("Waiting for 12:00PM..")
+        while datetime.now(timezone('est')).hour == 11:
+            time.sleep(0.5)
+        print("Reached 12:00PM!")
     
     
     driver.implicitly_wait(5)
