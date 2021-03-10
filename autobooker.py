@@ -80,19 +80,18 @@ try:
         keep_checking = True
         attempts = 0
 
-        driver.find_element_by_id("btn_date_select").click()  # day selector
-        # while keep_checking == True:
-        #     try:
-        #         driver.implicitly_wait(5)
-        #         driver.find_element_by_id("btn_date_select").click()  # day selector
-        #         keep_checkig = False
-        #     except:
-        #         print(f"Couldn't find date button. Attempt {attempts}")
-        #         if attempts == 250:
-        #             keep_checking = False
-        #         attempts = attempts + 1
-        #         driver.refresh()
-        #         time.sleep(2)
+        while keep_checking == True:
+            try:
+                driver.implicitly_wait(5)
+                driver.find_element_by_id("btn_date_select").click()  # day selector
+                keep_checking = False
+            except:
+                print(f"Couldn't find date button. Attempt {attempts}")
+                if attempts == 250:
+                    keep_checking = False
+                attempts = attempts + 1
+                driver.refresh()
+                time.sleep(2)
 
         driver.implicitly_wait(3)
         driver.find_element_by_id("date_" + str(booking_date)).click()
