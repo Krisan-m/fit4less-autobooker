@@ -86,7 +86,7 @@ try:
                 driver.find_element_by_id("btn_date_select").click()  # day selector
                 keep_checkig = False
             except:
-                print(f"Couldn't find date button. Attempt {attemps}")
+                print(f"Couldn't find date button. Attempt {attempts}")
                 if attempts == 250:
                     keep_checking = False
                 attempts = attempts + 1
