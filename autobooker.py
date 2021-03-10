@@ -46,11 +46,11 @@ try:
             time.sleep(0.5)
         print("Reached 12:00AM!")        
 
-    if curr_dt.hour == 11 and curr_dt.minute >= 58:
-        print("Waiting for 12:00PM..")
-        while datetime.now(timezone('est')).hour == 11:
-            time.sleep(0.5)
-        print("Reached 12:00PM!")
+    # if curr_dt.hour == 11 and curr_dt.minute >= 58:
+    #     print("Waiting for 12:00PM..")
+    #     while datetime.now(timezone('est')).hour == 11:
+    #         time.sleep(0.5)
+    #     print("Reached 12:00PM!")
     
     
     driver.implicitly_wait(5)
@@ -77,15 +77,21 @@ try:
         booking_date = curr_dt.date() + timedelta(days=i)
         curr_day = booking_date.weekday() # 0-4 is weekday, 5-6 is weekend
         
-        try:
-            driver.find_element_by_id("btn_date_select").click()  # day selector
-        except:
-            print("Couldn't find date button. Refreshing..")
-            time.sleep(5)
-            driver.refresh()
-            time.sleep(2)
-            driver.implicitly_wait(10)
-            driver.find_element_by_id("btn_date_select").click()  # day selector
+        keep_checking = True
+        attempts = 0
+
+        while keep_checking == True:
+            try:
+                driver.implicitly_wait(5)
+                driver.find_element_by_id("btn_date_select").click()  # day selector
+                keep_checkig = False
+            except:
+                print(f"Couldn't find date button. Attempt {attemps}")
+                if attempts == 250:
+                    keep_checking = False
+                attempts = attempts + 1
+                driver.refresh()
+                time.sleep(2)
 
         driver.implicitly_wait(3)
         driver.find_element_by_id("date_" + str(booking_date)).click()
