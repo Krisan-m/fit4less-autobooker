@@ -87,7 +87,7 @@ try:
                 keep_checking = False
             except:
                 print(f"Couldn't find date button. Attempt {attempts}")
-                if attempts == 250:
+                if attempts == 1:
                     keep_checking = False
                 attempts = attempts + 1
                 driver.refresh()
