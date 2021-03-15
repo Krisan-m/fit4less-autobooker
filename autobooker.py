@@ -40,11 +40,11 @@ try:
     booked_appointment = False
     curr_dt = datetime.now(timezone('est'))
 
-    if curr_dt.hour == 23 and curr_dt.minute >= 58:
-        print("Waiting for 12:00AM..")
-        while datetime.now(timezone('est')).hour == 23:            
+    if curr_dt.hour == 5 and curr_dt.minute >= 58:
+        print("Waiting for 6:00AM..")
+        while datetime.now(timezone('est')).hour == 5:            
             time.sleep(0.5)
-        print("Reached 12:00AM!")        
+        print("Reached 6:00AM!")        
 
     # if curr_dt.hour == 11 and curr_dt.minute >= 58:
     #     print("Waiting for 12:00PM..")
