@@ -42,7 +42,7 @@ try:
 
     if curr_dt.minute >= 58:
         print("Waiting for the hour to change..")
-        while datetime.now(timezone('est')).minute == 0:
+        while datetime.now(timezone('est')).minute != 0:
             time.sleep(0.5)
         print("Reached the new hour!")
 
