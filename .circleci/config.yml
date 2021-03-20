@@ -38,6 +38,8 @@ workflows:
             branches:
               only:
                 - main
+    jobs:
+      - build
   nightlyForWeekends:
     triggers:
       - schedule:
