@@ -40,18 +40,12 @@ try:
     booked_appointment = False
     curr_dt = datetime.now(timezone('est'))
 
-    if curr_dt.hour == 5 and curr_dt.minute >= 58:
-        print("Waiting for 6:00AM..")
-        while datetime.now(timezone('est')).hour == 5:            
+    if curr_dt.minute >= 58:
+        print("Waiting for the hour to change..")
+        while datetime.now(timezone('est')).minute == 0:
             time.sleep(0.5)
-        print("Reached 6:00AM!")        
+        print("Reached the new hour!")
 
-    # if curr_dt.hour == 11 and curr_dt.minute >= 58:
-    #     print("Waiting for 12:00PM..")
-    #     while datetime.now(timezone('est')).hour == 11:
-    #         time.sleep(0.5)
-    #     print("Reached 12:00PM!")
-    
     
     driver.implicitly_wait(5)
     password_input.send_keys(Keys.ENTER)
