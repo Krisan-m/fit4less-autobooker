@@ -38,6 +38,8 @@ workflows:
             branches:
               only:
                 - main
+  nightlyForWeekends:
+    triggers:
       - schedule:
           cron: "58 14,15 * * 3,4"
           filters:
